@@ -1,3 +1,15 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +17,264 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #1f2d3a;
+  background: #f6f8fa;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Компонування сторінки */
+
+.site-header {
+  padding: 1rem 1.25rem;
+  background: #ffffff;
+  border-bottom: 1px solid #d7e0e8;
+}
+
+.site-header h1 {
+  max-width: 64rem;
+  margin-inline: auto;
+}
+
+.site-header nav {
+  display: block;
+  max-width: 64rem;
+  margin-inline: auto;
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list a {
+  color: #075a94;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.nav-list a:hover,
+.nav-list a[aria-current='page'] {
+  text-decoration: underline;
+}
+
+.skip-link {
+  position: absolute;
+  top: -4rem;
+  left: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  background: #075a94;
+  color: #ffffff;
+  z-index: 10;
+  transition: top 0.15s ease-in;
+}
+
+.skip-link:focus {
+  top: 0.5rem;
+}
+
+.app-main {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 1rem 1.25rem 2.5rem;
+}
+
+.result-preview {
+  max-width: 22rem;
+}
+
+.app-main section {
+  margin-block: 2rem;
+}
+
+.site-footer {
+  padding: 1.25rem;
+  background: #ffffff;
+  border-top: 1px solid #d7e0e8;
+  color: #455b6b;
+}
+
+.site-footer p {
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.text-link {
+  color: #075a94;
+}
+
+/* Каталог запчастин */
+
+.catalog-summary {
+  color: #455b6b;
+}
+
+.part-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.part-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  height: 100%;
+  padding: 1rem;
+  border: 1px solid #c7d2dc;
+  border-radius: 0.75rem;
+  background: #ffffff;
+}
+
+.part-card h3 {
+  margin: 0;
+  font-size: 1.125rem;
+}
+
+.part-meta {
+  margin: 0;
+  color: #455b6b;
+  font-size: 0.9rem;
+}
+
+.part-card .category {
+  margin: 0;
+  color: #075a94;
+  font-weight: 600;
+}
+
+.part-price {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.part-card p {
+  margin-block: 0;
+}
+
+/* Спільні елементи */
+
+.status {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  border: 1px solid #687d8d;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.status.available {
+  border-color: #1f7a3f;
+  background: #e6f5ec;
+  color: #1f7a3f;
+}
+
+.status.unavailable {
+  border-color: #a33a3a;
+  background: #fbeaea;
+  color: #a33a3a;
+}
+
+.empty-state {
+  padding: 1rem;
+  border: 1px solid #c7d2dc;
+  border-radius: 0.5rem;
+  background: #ffffff;
+}
+
+.form-field {
+  display: grid;
+  gap: 0.375rem;
+  margin-block: 1rem;
+  max-width: 36rem;
+}
+
+.form-field label {
+  font-weight: 600;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 0.625rem;
+  border: 1px solid #687d8d;
+  border-radius: 0.375rem;
+  font: inherit;
+  background: #ffffff;
+}
+
+.form-field textarea {
+  resize: vertical;
+}
+
+.field-hint {
+  margin: 0;
+  color: #455b6b;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.app-button {
+  padding: 0.625rem 1rem;
+  border: 1px solid #075a94;
+  border-radius: 0.375rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+.app-button-primary {
+  background: #075a94;
+  color: #ffffff;
+}
+
+.app-button-secondary {
+  background: #ffffff;
+  color: #075a94;
+}
+
+.app-button:disabled {
+  opacity: 0.65;
+  cursor: default;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 3px solid #075a94;
+  outline-offset: 3px;
+}
+
+.info-list {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.5rem 1rem;
+  margin: 0;
+}
+
+.info-list dt {
+  font-weight: 600;
+}
+
+.info-list dd {
+  margin: 0;
 }
